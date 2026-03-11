@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FreeWillDepartures")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff5254f4760c5c37b8a1bfc3c475338a9df2c534")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1edcb6bec3f8a3a37fb0d40e5b7e98aa3ca5b642")]
 [assembly: System.Reflection.AssemblyProductAttribute("FreeWillDepartures")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FreeWillDepartures")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
