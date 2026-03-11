@@ -1,7 +1,10 @@
 // MentalState_LeaveForDream.cs
-// GiveUpExit 정신 상태를 상속받아 "꿈을 찾아 떠남" 동작을 구현.
-// 폰이 맵 끝으로 걸어나가는 행동은 부모 클래스(MentalState_GiveUpExit)가 처리.
-// 우리는 영구 이탈 로직(파벌 제거)을 추가함.
+// 꿈을 찾아 떠나는 커스텀 MentalState.
+//
+// [핵심 설계]
+// 바닐라 ThinkTree는 defName이 "GiveUpExit"인 MentalState에만 탈출 Job을 부여함.
+// 우리 커스텀 defName "FWD_LeaveForDream"은 ThinkTree에 등록되지 않으므로
+// PostStart()에서 직접 맵 탈출 Job(Goto + exitMapOnArrival)을 폰에게 부여해야 함.
 
 using RimWorld;
 using RimWorld.Planet;
@@ -25,12 +28,60 @@ namespace FreeWillDepartures
 
         /// <summary>
         /// 정신 상태가 시작될 때 호출됨.
-        /// 편지 발송은 DepartureUtility에서 처리하므로, 여기선 부모 초기화만.
+        /// 바닐라 ThinkTree가 우리 커스텀 defName을 모르므로
+        /// 직접 맵 탈출 Job을 부여해 폰이 실제로 걸어나가게 함.
         /// </summary>
         public override void PostStart(string reason)
         {
             base.PostStart(reason);
             letterSent = true; // 편지는 트리거 지점에서 이미 발송됨
+            GiveExitJob();
+        }
+
+        /// <summary>
+        /// 폰에게 맵 탈출 Job을 직접 부여.
+        /// 상인 이탈 시에는 상인 방향으로, 그 외에는 최적 탈출 지점으로 이동.
+        /// </summary>
+        private void GiveExitJob()
+        {
+            if (!pawn.Spawned || pawn.Map == null) return;
+
+            IntVec3 exitSpot;
+
+            // 상인 이탈인 경우: 상인(TradeSession.trader)의 위치 방향으로 탈출
+            if (departureReason == "Trader" && TryGetTraderExitSpot(out IntVec3 traderSpot))
+            {
+                exitSpot = traderSpot;
+            }
+            // 그 외: 최적 탈출 지점 탐색
+            else if (!RCellFinder.TryFindBestExitSpot(pawn, out exitSpot, TraverseMode.ByPawn))
+            {
+                return; // 탈출 경로 없음
+            }
+
+            Job job = JobMaker.MakeJob(JobDefOf.Goto, exitSpot);
+            job.exitMapOnArrival = true;                      // 목적지 도달 시 맵 탈출
+            job.locomotionUrgency = LocomotionUrgency.Jog;   // 뛰어서 이동
+            pawn.jobs.TryTakeOrderedJob(job, JobTag.MiscWork);
+        }
+
+        /// <summary>
+        /// TradeSession의 상인 위치 근처의 맵 탈출 지점을 찾음.
+        /// 궤도 상인(Orbital trader)은 맵에 없으므로 false 반환.
+        /// </summary>
+        private bool TryGetTraderExitSpot(out IntVec3 spot)
+        {
+            spot = IntVec3.Invalid;
+
+            // 상인이 맵 위의 실제 폰인 경우 (캐러밴 상인 등)
+            if (TradeSession.trader is Pawn traderPawn && traderPawn.Spawned
+                && traderPawn.Map == pawn.Map)
+            {
+                // 상인 위치 근처의 맵 가장자리 탈출 지점 탐색
+                return RCellFinder.TryFindExitSpotNear(pawn, traderPawn.Position, 30f, out spot, TraverseMode.ByPawn);
+            }
+
+            return false;
         }
 
         /// <summary>
