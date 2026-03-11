@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- 림월드는 .NET Framework 4.7.2 기반 -->
+    <TargetFramework>net472</TargetFramework>
+    <!-- 출력 DLL 이름 -->
+    <AssemblyName>FreeWillDepartures</AssemblyName>
+    <RootNamespace>FreeWillDepartures</RootNamespace>
+    <!-- 출력 경로: 1.6/Assemblies 폴더로 직접 빌드 -->
+    <OutputPath>../1.6/Assemblies/</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- 의존성 DLL을 출력 폴더에 복사하지 않음 (림월드가 이미 보유) -->
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <Nullable>disable</Nullable>
+    <Optimize>true</Optimize>
+    <!-- 경고를 에러로 처리하지 않음 (림월드 API 내부 경고 허용) -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <!-- XML 문서 파일 생성하지 않음 -->
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- NuGet 패키지: Harmony (컴파일용 - 런타임은 림월드 내장 Harmony 사용) -->
+  <ItemGroup>
+    <PackageReference Include="Lib.Harmony" Version="2.3.3">
+      <!-- Private=False: 출력 폴더에 0Harmony.dll 복사 안 함 (림월드가 처리) -->
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <!-- 림월드 DLL 참조 -->
+  <ItemGroup>
+    <!-- 핵심 게임 코드 (MentalState, Pawn 등 모든 클래스가 여기 있음) -->
+    <Reference Include="Assembly-CSharp">
+      <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <!-- Unity 엔진 코어 (GUI, Rect 등에 필요) -->
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <!-- 첫 번째 패스 어셈블리 (일부 기본 타입 포함) -->
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

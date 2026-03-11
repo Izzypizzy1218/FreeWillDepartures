@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 생일 출발 편지 -->
+  <FWD_BirthdayDeparture_Label>꿈을 찾아 떠나다</FWD_BirthdayDeparture_Label>
+  <FWD_BirthdayDeparture_Text>{PAWN_nameDef}이(가) 이제 어엿한 성인이 되었습니다.
+
+오늘 생일을 맞은 {PAWN_nameDef}은(는) 밤새 별을 바라보며, 이 정착지 밖에 자신이 진정으로 원하는 삶이 있다는 것을 깨달았습니다.
+
+아무도 모르게 짐을 챙긴 {PAWN_nameDef}은(는) 새벽빛이 물들 무렵, 더 넓은 세상을 향해 조용히 걸음을 옮겼습니다. 그 뒷모습은 씁쓸하지만, 어딘가 자유로워 보였습니다.</FWD_BirthdayDeparture_Text>
+
+  <!-- 상인 출발 편지 -->
+  <FWD_TraderDeparture_Label>미지의 세계로 떠나다</FWD_TraderDeparture_Label>
+  <FWD_TraderDeparture_Text>{PAWN_nameDef}이(가) 정착지를 떠나기로 결심했습니다.
+
+상인들이 늘어놓는 바깥 세상 이야기에 귀를 기울이던 {PAWN_nameDef}의 눈이 점점 빛나기 시작했습니다. 수많은 도시와 경이로운 문명, 아직 발견되지 않은 광활한 땅들...
+
+결국 {PAWN_nameDef}은(는) 상단의 짐꾼에게 다가가 말했습니다. "저도 함께 가도 될까요?" 상인은 빙그레 웃으며 고개를 끄덕였고, {PAWN_nameDef}은(는) 뒤도 돌아보지 않고 상단을 따라나섰습니다.</FWD_TraderDeparture_Text>
+
+</LanguageData>

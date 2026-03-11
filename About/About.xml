@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Free Will Departures</name>
+  <packageId>FreeWillDepartures.Mod</packageId>
+  <author>FreeWillDepartures</author>
+  <description>
+    정착민들이 자유의지를 가진 것처럼, 특정 트리거가 달성되면 무작위 확률로 자신의 꿈이나 새로운 세계를 찾아 정착지를 영영 떠나는 이벤트를 추가합니다.
+
+    - 성인(18세) 생일: 5% 확률로 독립 선언
+    - 상인과 거래 후: 2% 확률로 상단을 따라 떠남
+
+    모드 설정에서 각각의 확률을 조절할 수 있습니다.
+  </description>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+</ModMetaData>

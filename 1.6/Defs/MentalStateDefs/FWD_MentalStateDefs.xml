@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    꿈을 찾아 떠나는 커스텀 MentalState 정의.
+    GiveUpExit의 XML 구조를 참고하여 작성됨.
+    stateClass는 우리가 만든 C# 클래스를 참조함.
+  -->
+  <MentalStateDef ParentName="BaseMentalState">
+    <defName>FWD_LeaveForDream</defName>
+    <label>chasing a dream</label>
+    <stateClass>FreeWillDepartures.MentalState_LeaveForDream</stateClass>
+    <category>Misc</category>
+    <!-- 노예와 죄수는 이 정신 상태를 가질 수 없음 -->
+    <prisonersCanDo>false</prisonersCanDo>
+    <slavesCanDo>false</slavesCanDo>
+    <blockNormalThoughts>true</blockNormalThoughts>
+    <nameColor>(0.7, 0.95, 0.7)</nameColor>
+    <!-- 편지는 C# 코드에서 직접 발송하므로 여기선 빈 값 -->
+    <beginLetter></beginLetter>
+    <beginLetterDef>NeutralEvent</beginLetterDef>
+    <recoveryMessage>{0} has had a change of heart and decided to stay.</recoveryMessage>
+    <baseInspectLine>Chasing a dream</baseInspectLine>
+    <allowBeatfire>true</allowBeatfire>
+    <!-- 회복 시간: 매우 길게 설정 (실제로는 맵을 나가면 종료됨) -->
+    <minTicksBeforeRecovery>999999</minTicksBeforeRecovery>
+    <recoveryMtbDays>999</recoveryMtbDays>
+  </MentalStateDef>
+
+</Defs>

@@ -1,0 +1,10 @@
+C:\Users\집\Desktop\cluade\FreeWillDepartures\Source\obj\Debug\FreeWillDepartures.csproj.AssemblyReference.cache
+C:\Users\집\Desktop\cluade\FreeWillDepartures\Source\obj\Debug\FreeWillDepartures.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\집\Desktop\cluade\FreeWillDepartures\Source\obj\Debug\FreeWillDepartures.AssemblyInfoInputs.cache
+C:\Users\집\Desktop\cluade\FreeWillDepartures\Source\obj\Debug\FreeWillDepartures.AssemblyInfo.cs
+C:\Users\집\Desktop\cluade\FreeWillDepartures\Source\obj\Debug\FreeWillDepartures.csproj.CoreCompileInputs.cache
+C:\Users\집\Desktop\cluade\FreeWillDepartures\Source\obj\Debug\FreeWillDepartures.sourcelink.json
+C:\Users\집\Desktop\cluade\FreeWillDepartures\1.6\Assemblies\FreeWillDepartures.dll
+C:\Users\집\Desktop\cluade\FreeWillDepartures\1.6\Assemblies\FreeWillDepartures.pdb
+C:\Users\집\Desktop\cluade\FreeWillDepartures\Source\obj\Debug\FreeWillDepartures.dll
+C:\Users\집\Desktop\cluade\FreeWillDepartures\Source\obj\Debug\FreeWillDepartures.pdb
